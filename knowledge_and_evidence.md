@@ -117,7 +117,7 @@ python3 main.py
    | ------------             | ----------------------- |
    | self.pixels              | list                       |
    | A member of self.pixels  | int                       |
-   | self                     | self                       |
+   | self                     | class                       |
 
 3. Examine the code for `smiley.py`, `sad.py`, and `happy.py`. Give an example of each of the following control structures using an example from **each** of these files. Include the first line and the line range:
 
@@ -128,12 +128,12 @@ python3 main.py
    |  iteration   | `smiley.py`          | Nil           | Nil           |
    | ------------ | ---------- | ----------- | ----------- |
    |  sequence    |  `sad.py`         | super().__init__()           | 4           |
-   |  selection   | `sad.py`          | self.pixels[pixel] = self.BLANK           | 1           |
-   |  iteration   | `sad.py`          | for pixel in mouth:           | 2           |
+   |  selection   | `sad.py`          | <code>if wide_open:</code>           | 4           |
+   |  iteration   | `sad.py`          | <code>for pixel in eyes:</code>          | 6           |
    | ------------ | ---------- | ----------- | ----------- |
    |  sequence    |  `happy.py`         | super().__init__()           | 4           |
-   |  selection   | `happy.py`          | for pixel in mouth:           | 2           |
-   |  iteration   | `happy.py`          | self.pixels[pixel] = self.BLANK           | 1           |
+   |  selection   | `happy.py`          | <code>self.BLANK if wide_open else self.complexion() </code>           | 1           |
+   |  iteration   | `happy.py`          | <code> for pixel in mouth: </code>| 2           |
 
 4. Though everything in Python is an object, it is sometimes said to have four "primitive" types. Examining the three files `smiley.py`, `sad.py`, and `happy.py`, identify which of the following types are used in any of these files, and give an example of each (use an example from the code, if applicable, otherwise provide an example of your own):
 
@@ -211,8 +211,11 @@ You do not need to understand this code to use it for the smiley exercise"""
 
 2. Explain the concept of abstraction, giving an example from the project (note "implementing an ABC" is **not** in itself an example of abstraction). (Max 150 words)
 
-> An abstract class is a parent structure for child classes. It is intended to be implemented by other classes
-
+> Abstraction identifies and exposes key features of an object while leaving out the unnecessary details. This simplifies how the object is used and allows generalisation of objects so that they can be used in the same way. 
+``` python
+@abstractmethod
+    def blink(self):
+```
 3. What is the name of the process of deriving from base classes? What is its purpose in this project? (Max 150 words)
 
 >Inheritance, this allows a class that inherits all the methods and properties from another class. 
@@ -256,13 +259,9 @@ Unlike the `Happy` smiley, the current implementation of the `Sad` smiley does n
 
 1. Does the code's author believe that every `Smiley` should be able to blink? Explain.
 
-> No, as the class Smiley only creates the smiley circle and it not does not have a draw_eyes method unlike classes Sad and Happy 
-
 > Yes, if other Smileys have a blink method like the class Happy
 
 2. For those smileys that blink, does the author expect them to blink in the same way? Explain.
-
-> Yes, the class Happy blinks for 0.25 second
 
 > No, as a blink method can be provided different blink length in other Smilies
 
